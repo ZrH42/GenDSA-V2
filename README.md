@@ -26,21 +26,12 @@ We released a portion of the 3D vascular and non vascular datasets, including th
 
 
 ## <img src='/sundry/1f3ac.gif' width="30px"> Inference Demo
-Run the following commands to generate single/multi-frame interpolation:
-
-* Single-frame interpolation
-```shell
-python Simple_Interpolator.py \
---model_path ./weights/checkpoints/3D-vas-Inf1.pkl \
---frame1 ./demo_images/DSA_1.png \
---frame2 ./demo_images/DSA_2.png \
---inter_frames 1
-```
+Run the following commands to generate multi-frame interpolation:
 
 * Two-frame interpolation
 ```shell
 python Simple_Interpolator.py \
---model_path ./weights/checkpoints/3D-vas-Inf2.pkl \
+--model_path ./weights/checkpoints/3D-Head-Inf2.pkl \
 --frame1 ./demo_images/DSA_1.png \
 --frame2 ./demo_images/DSA_2.png \
 --inter_frames 2
@@ -49,7 +40,7 @@ python Simple_Interpolator.py \
 * Three-frame interpolation
 ```shell
 python Simple_Interpolator.py \
---model_path ./weights/checkpoints/3D-vas-Inf3.pkl \
+--model_path ./weights/checkpoints/3D-Head-Inf3.pkl \
 --frame1 ./demo_images/DSA_1.png \
 --frame2 ./demo_images/DSA_2.png \
 --inter_frames 3
