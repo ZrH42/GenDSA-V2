@@ -22,7 +22,7 @@ pip install -r GenDSA_env.txt
 Download the [model checkpoints](https://drive.google.com/drive/folders/1lB0jEF581p5csDq1VzLhjCCaIVCBXmx_?usp=sharing), put all pkl files into ../GenDSA/weights/checkpoints.
 
 ## <img src='/sundry/听诊器.gif' width="30px"> Our Dataset and Inference Cases
-We released a portion of the 3D vascular and non vascular datasets, including the results of our model inference. ([Part of data](https://github.com/ZrH42/GenDSA_Data))
+We released a portion of the ([retrospective data.](https://github.com/ZrH42/GenDSA_Data))
 
 
 ## <img src='/sundry/1f3ac.gif' width="30px"> Inference Demo
