@@ -6,7 +6,7 @@
 * python 3.8
 * cudatoolkit 11.2.1
 * cudnn 8.1.0.77
-* See 'requirements_Ours.txt' for Python libraries required
+* See 'GenDSA_env.txt' for Python libraries required
 
 ```shell
 conda create -n GenDSA python=3.8
@@ -22,7 +22,7 @@ pip install -r GenDSA_env.txt
 Download the [model checkpoints](https://drive.google.com/drive/folders/1lB0jEF581p5csDq1VzLhjCCaIVCBXmx_?usp=sharing), put all pkl files into ../GenDSA/weights/checkpoints.
 
 ## <img src='/sundry/听诊器.gif' width="30px"> Our Dataset and Inference Cases
-We released a portion of the 3D vascular and non vascular datasets, including the results of our model inference. ([Google Drive](https://drive.google.com/drive/folders/1t-esIdUnVcZdFXmSGhGcwhcpI0KyGKY0?usp=sharing))
+We released a portion of the 3D vascular and non vascular datasets, including the results of our model inference. ([Part of data](https://github.com/ZrH42/GenDSA_Data))
 
 
 ## <img src='/sundry/1f3ac.gif' width="30px"> Inference Demo
