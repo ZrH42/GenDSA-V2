@@ -41,7 +41,7 @@ def resize_image_if_large(image_path, max_size=1024):
     except Exception as e:
         print(f"Error processing image {image_path}: {e}")
 
-def process_directory(input_folder, output_folder, model, inter_frames):
+def process_directory(input_folder, output_folder, model, inter_frames, start_frame=0):
     for root, dirs, files in os.walk(input_folder):
         rename_images_in_directory(root)
         
@@ -52,7 +52,7 @@ def process_directory(input_folder, output_folder, model, inter_frames):
             current_output_folder = os.path.join(output_folder, relative_path)
             os.makedirs(current_output_folder, exist_ok=True)
             
-            interpolate_sequence(root, current_output_folder, model, inter_frames)
+            interpolate_sequence(root, current_output_folder, model, inter_frames, start_frame)
 
 def rename_images_in_directory(directory):
     frame_files = sorted_nicely(glob.glob(os.path.join(directory, '*.png')))
@@ -71,11 +71,11 @@ def rename_images_in_directory(directory):
                 except Exception as e:
                     print(f"Rename failed {basename}: {e}")
 
-def interpolate_sequence(input_folder, output_folder, model, inter_frames):
+def interpolate_sequence(input_folder, output_folder, model, inter_frames, start_frame=0):
     frame_files = sorted_nicely(glob.glob(os.path.join(input_folder, '*.png')))
     num_frames = len(frame_files)
 
-    selected_frames = [frame_files[i] for i in range(num_frames) if i % (inter_frames + 1) == 0 and i >= 0]
+    selected_frames = [frame_files[i] for i in range(num_frames) if i % (inter_frames + 1) == 0 and i >= start_frame]
 
     for frame in selected_frames:
         resize_image_if_large(frame)
@@ -101,10 +101,11 @@ def interpolate_sequence(input_folder, output_folder, model, inter_frames):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
+    parser.add_argument('--model_path', type=str, default='model', help='Model path')
     parser.add_argument('--input_folder', type=str, default='/path/to/input/dir', help='Input frames directory path')
     parser.add_argument('--output_folder', type=str, default='/path/to/output/dir', help='Output interpolated frames directory path')
-    parser.add_argument('--model_path', type=str, default='model', help='Model path')
     parser.add_argument('--inter_frames', type=int, default=3, help='Number of interpolation frames')
+    parser.add_argument('--start_frame', type=int, default=0, help='Starting frame index (0-based)')
     args = parser.parse_args()
 
     cfg.MODEL_CONFIG['MODEL_ARCH'] = cfg.init_model_config(
@@ -117,4 +118,4 @@ if __name__ == '__main__':
     model.eval()
     model.device()
 
-    process_directory(args.input_folder, args.output_folder, model, args.inter_frames)
+    process_directory(args.input_folder, args.output_folder, model, args.inter_frames, args.start_frame)

@@ -53,7 +53,8 @@ python ImageSequenceInterFrame.py \
 --model_path ./weights/checkpoints/3D-Head-Inf2.pkl \
 --input_folder ./demo_sequences/3D_Head \
 --output_folder ./demo_sequences/3D_Head_Inter2 \
---inter_frames 2
+--inter_frames 2 \
+--start_frame 15
 ```
 
 * Three-frame 2D_Head sequence interpolation
@@ -63,7 +64,8 @@ python ImageSequenceInterFrame.py \
 --model_path ./weights/checkpoints/2D-Head-Inf3.pkl \
 --input_folder ./demo_sequences/2D_Head \
 --output_folder ./demo_sequences/2D_Head_Inter3 \
---inter_frames 3
+--inter_frames 3 \
+--start_frame 15
 ```
 
 You can also use other checkpoints to generate 1~3 frame interpolation for your 2D/3D - Head/Abdomen/Thorax/Pelvic/Periph images.
